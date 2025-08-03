@@ -39,7 +39,8 @@ resource "aws_instance" "main" {
   key_name = module.ssh_keys.key_pair_name
 
   tags = merge(local.common_tags, {
-    "Name" = "${local.name_prefix}-webapp-${count.index}"
+    "Name"         = "${local.name_prefix}-webapp-${count.index}"
+    "InstanceType" = var.instance_type
   })
 
   # Provisioner Stuff
